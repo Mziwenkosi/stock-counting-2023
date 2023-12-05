@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Counting System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div id="current-time"></div>
+        <div id="current-date"></div>
+        <h1 class="title">Stock Counting System</h1>
+        <center><button class="add-item">Add Item</button>
+            <button class="submit-all">Submit All</button>
+        </center>
+
+    </div>
+    
+    <div class="container">
+        <h2 class="title">Items</h2>
+        <div class="items-container"></div>
+    </div>
+    
+    <script src="script.js"></script>
+    
+    <script>
+        function updateDateTime() {
+            const currentTimeElement = document.getElementById('current-time');
+            const currentDateElement = document.getElementById('current-date');
+            const now = new Date();
+
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            const formattedTime = `${hours}:${minutes}:${seconds}`;
+
+            const year = now.getFullYear();
+            const month = (now.getMonth() + 1).toString().padStart(2, '0');
+            const day = now.getDate().toString().padStart(2, '0');
+            const formattedDate = `${year}-${month}-${day}`;
+
+            currentTimeElement.textContent = formattedTime;
+            currentDateElement.textContent = formattedDate;
+        }
+
+        // Call updateDateTime initially to set the time and date when the page loads
+        updateDateTime();
+
+        // Update the time and date every second (1000 milliseconds)
+        setInterval(updateDateTime, 1000);
+    </script>
+</body>
+</html>
